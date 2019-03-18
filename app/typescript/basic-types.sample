@@ -1,0 +1,8 @@
+//Boolean
+var isAnswer: boolean = true;
+
+//Number
+var val: number = 42;
+
+//String
+var name: string = 'Deep Thought';

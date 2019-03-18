@@ -1,0 +1,1 @@
+{"version":3,"file":"string-concat-old-school.js","sourceRoot":"","sources":["../../template-strings/string-concat-old-school.ts"],"names":[],"mappings":";;;;;;;;;;;YAEM,MAAM,GAAG;gBACb,IAAI,EAAE,MAAM;gBACZ,GAAG,EAAE,EAAE;aACR,CAAC;YAEI,GAAG,GAAG,MAAM,CAAC,IAAI,GAAG,MAAM,GAAG,MAAM,CAAC,GAAG,GAAG,aAAa,CAAC;YAE9D,iBAAO,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC;QAIjB,CAAC"}

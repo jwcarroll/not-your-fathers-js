@@ -1,0 +1,1 @@
+{"version":3,"file":"common.js","sourceRoot":"","sources":["../../destructuring/common.ts"],"names":[],"mappings":";;;;IAOA,SAAgB,SAAS;QAAC,cAAiB;aAAjB,UAAiB,EAAjB,qBAAiB,EAAjB,IAAiB;YAAjB,yBAAiB;;QACzC,IAAM,GAAG,GAAG,gBAAC,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;QACxB,IAAM,GAAG,GAAG,gBAAC,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;QAExB,OAAO,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC;IACpB,CAAC;;;;;;;;;QACD,CAAC"}

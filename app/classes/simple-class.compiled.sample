@@ -1,0 +1,11 @@
+var Person = (function () {
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.sayHello = function () {
+        return "I'm " + this.name;
+    };
+    return Person;
+}());
+var josh = new Person('Josh', 38);

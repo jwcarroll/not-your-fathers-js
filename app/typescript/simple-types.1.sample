@@ -1,0 +1,8 @@
+//Boolean
+var isAnswer = true;
+
+//This is ok
+isAnswer = false;
+
+//This will be an error
+isAnswer = 'Not a number';

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no" />
+    <title>Trailing Letters Demo | RxJS | @jwcarroll</title>
+    <style>
+        /* latin */
+
+        @font-face {
+            font-family: 'Share Tech Mono';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(/fonts/ShareTechMono.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        #letters {
+            position: relative;
+        }
+
+        #letters span {
+            position: absolute;
+            font-size: 6em;
+        }
+
+        .Aligner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Aligner-item {
+            max-width: 50%;
+        }
+
+        .Aligner-item--top {
+            align-self: flex-start;
+        }
+
+        .Aligner-item--bottom {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Aligner">
+        <div class="Aligner-item Aligner-item--top"></div>
+        <div class="Aligner-item">
+            <h1>Josh Carroll | ResultStack</h1>
+            <h1>@jwcarroll</h1>
+            <h2></h2>
+        </div>
+        <div class="Aligner-item Aligner-item--bottom"></div>
+    </div>
+    <div id="letters"></div>
+    <script src="./dist/demo-trailing-letters.js"></script>
+</body>
+
+</html>

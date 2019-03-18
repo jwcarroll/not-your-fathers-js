@@ -1,0 +1,7 @@
+//Array of numbers
+var ages: number[] =
+    [33, 16, 27];
+
+//Array of strings
+var names: Array<string> =
+    ['Josh', 'Jeff', 'Susan'];

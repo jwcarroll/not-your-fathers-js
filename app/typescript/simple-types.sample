@@ -1,0 +1,8 @@
+//Number
+var age: number;
+
+//This is ok
+age = 32;
+
+//This will be an error
+age = 'Not a number';

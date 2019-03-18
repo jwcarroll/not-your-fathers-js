@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./compiled/",
+        "sourceMap": true,
+        "module": "system",
+        "target": "es5",
+        "allowJs": true,
+        "rootDir": "./",
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noImplicitAny": false,
+        "strict": false
+    },
+    "compileOnSave": true
+}

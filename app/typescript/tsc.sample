@@ -1,0 +1,2 @@
+$ npm install -g typescript
+$ tsc my-code.ts

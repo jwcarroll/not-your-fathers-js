@@ -1,0 +1,11 @@
+interface Person {
+   name: string;
+   age: number;
+}
+
+function describePerson(person: Person): void {
+   var description = person.name + " is " +
+       person.age + " years old.";
+
+   console.log(description);
+}

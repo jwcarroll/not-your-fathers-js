@@ -1,0 +1,3 @@
+//Mixed Type Array
+var mixedBag: any[] =
+    ['abc', 123, true, {foo:'bar'}];

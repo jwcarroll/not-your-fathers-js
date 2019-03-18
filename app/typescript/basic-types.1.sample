@@ -1,0 +1,5 @@
+//No complaints
+var whatever: any = 123;
+
+//Also good
+whatever = 'Just a string';
