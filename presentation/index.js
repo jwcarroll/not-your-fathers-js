@@ -48,7 +48,7 @@ require("animate.css");
 
 require("prismjs/components/prism-typescript");
 
-const images = {
+const images = fixImagePaths({
   resultStackLogo: require("../assets/rs-banner-transparent.png"),
   fatArrowMan: require("../assets/fat-arrow-man.jpg"),
   actuallyMan: require("../assets/actually-man.png"),
@@ -57,17 +57,8 @@ const images = {
   mindBlown: require("file-loader!../assets/mind-blown.mp4"),
   abeLincoln: require("../assets/abraham_lincoln_marquee.jpg"),
   selfie: require("../assets/professor-with-stars.jpg"),
-  selfieTweet: require("../assets/selfie-tweet.png"),
-  destructuring: {
-    extraPropError: require("../assets/extra-property-error.png"),
-    objectSpread: require("../assets/object-destructuring-spread.png")
-  },
-  typeGuard: {
-    first: require("../assets/type-guard.0.png"),
-    second: require("../assets/type-guard.1.png"),
-    third: require("../assets/type-guard.2.png")
-  }
-};
+  selfieTweet: require("../assets/selfie-tweet.png")
+});
 
 const data = {
   users: require("../assets/snippets/sample-data.json")
@@ -845,4 +836,13 @@ function NoteVideo(props) {
       </video>
     </div>
   );
+}
+
+function fixImagePaths(images){
+  const oldPaths = images;
+  const newPaths = mapValues(images, (v) => v.replace(/^\/dist/, '/dist/'));
+
+  console.log(oldPaths, newPaths);
+
+  return newPaths;
 }

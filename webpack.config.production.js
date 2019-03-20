@@ -2,7 +2,8 @@
 
 var path = require("path");
 var webpack = require("webpack");
-
+const TerserPlugin = require('terser-webpack-plugin-legacy');
+  
 module.exports = {
   entry: {
     presentation: [
@@ -33,10 +34,11 @@ module.exports = {
         "NODE_ENV": JSON.stringify("production")
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
+    new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        ecma: 6,
+      },
     })
   ],
   module: {
