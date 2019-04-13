@@ -50,7 +50,6 @@ require("animate.css");
 require("prismjs/components/prism-typescript");
 
 const images = fixImagePaths({
-  resultStackLogo: require("../assets/rs-banner-transparent.png"),
   fatArrowMan: require("../assets/fat-arrow-man.jpg"),
   actuallyMan: require("../assets/actually-man.png"),
   typescriptLogo: require("../assets/typescript-logo.svg"),
