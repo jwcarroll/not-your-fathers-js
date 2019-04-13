@@ -1,23 +1,18 @@
-System.register(["lodash"], function (exports_1, context_1) {
+System.register([], function (exports_1, context_1) {
     "use strict";
-    var lodash_1;
     var __moduleName = context_1 && context_1.id;
     function getMinMax() {
         var nums = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             nums[_i] = arguments[_i];
         }
-        var min = lodash_1.default.min(nums);
-        var max = lodash_1.default.max(nums);
+        var min = Math.min.apply(Math, nums);
+        var max = Math.max.apply(Math, nums);
         return [min, max];
     }
     exports_1("getMinMax", getMinMax);
     return {
-        setters: [
-            function (lodash_1_1) {
-                lodash_1 = lodash_1_1;
-            }
-        ],
+        setters: [],
         execute: function () {
         }
     };

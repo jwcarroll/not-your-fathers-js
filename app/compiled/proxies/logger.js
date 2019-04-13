@@ -1,13 +1,13 @@
-System.register(["console", "lodash"], function (exports_1, context_1) {
+System.register(["console"], function (exports_1, context_1) {
     "use strict";
-    var console_1, lodash_1, josh;
+    var console_1, josh;
     var __moduleName = context_1 && context_1.id;
     function logMethodCalls(obj) {
         for (var propName in obj) {
             if (!obj.hasOwnProperty(propName))
                 continue;
             var func = obj[propName];
-            if (lodash_1.default.isFunction(func)) {
+            if (typeof func === "function") {
                 obj[propName] = createLoggedMethod(func);
             }
         }
@@ -25,9 +25,6 @@ System.register(["console", "lodash"], function (exports_1, context_1) {
         setters: [
             function (console_1_1) {
                 console_1 = console_1_1;
-            },
-            function (lodash_1_1) {
-                lodash_1 = lodash_1_1;
             }
         ],
         execute: function () {

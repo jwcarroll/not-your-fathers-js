@@ -1,5 +1,4 @@
 import { console } from "console";
-import _ from "lodash";
 
 const josh = {
   name: 'Josh',
@@ -19,7 +18,7 @@ function logMethodCalls<T extends Object>(obj: T) {
 
     const func = obj[propName];
 
-    if (_.isFunction(func)) {
+    if (typeof func === "function") {
       obj[propName] = createLoggedMethod(<any>func);
     }
   }
