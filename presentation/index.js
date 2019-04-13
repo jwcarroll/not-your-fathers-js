@@ -1,7 +1,6 @@
 // Import React
 import React from "react";
 import Color from "color";
-import styled, { css } from "react-emotion";
 
 // Import Spectacle Core tags
 import {
@@ -40,6 +39,39 @@ import createTheme from "spectacle/lib/themes/default";
 import CodeSlide from 'spectacle-code-slide';
 import CodeRunner from '../assets/components/code-runner';
 import RawHtml from '../assets/components/raw-html';
+
+//Custom components
+function Keyword(props){
+  const styles = {
+    textShadow: '1px 1px 1px #000',
+    color: '#f5b700',
+    textTransform: 'uppercase'
+  };
+  
+  return (
+    <span style={styles} {...props}/>
+  );
+}
+
+function NoteImage(props) {
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <img {...props} />
+    </div>
+  );
+}
+
+function NoteVideo(props) {
+  const { height, ...rest } = props;
+
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <video height={height} autoPlay loop>
+        <source {...rest}></source>
+      </video>
+    </div>
+  );
+}
 
 // Require CSS
 require("normalize.css");
@@ -979,26 +1011,6 @@ function addForwardSlash(str) {
   return /^\//g.test(str) ? str : `/${str}`;
 }
 
-function NoteImage(props) {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <img {...props} />
-    </div>
-  );
-}
-
-function NoteVideo(props) {
-  const { height, ...rest } = props;
-
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <video height={height} autoPlay loop>
-        <source {...rest}></source>
-      </video>
-    </div>
-  );
-}
-
 function fixImagePaths(images){
   const oldPaths = images;
   const newPaths = mapValues(images, (v) => v.replace(/^\/dist/, '/dist/'));
@@ -1007,9 +1019,3 @@ function fixImagePaths(images){
 
   return newPaths;
 }
-
-const Keyword = styled("span")`
-  text-shadow: 1px 1px 1px #000;
-  color: #f5b700;
-  text-transform: uppercase;
-`;
