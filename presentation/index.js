@@ -92,7 +92,9 @@ const images = fixImagePaths({
   selfieTweet: require("../assets/selfie-tweet.png"),
   titanic: require("../assets/titanic.jpg"),
   hindenburg: require("../assets/hindenburg.jpg"),
-  threeMileIsland: require("../assets/Three-Mile-Island.jpg")
+  threeMileIsland: require("../assets/Three-Mile-Island.jpg"),
+  codestock: require("../assets/codestock-slidedeckcover.jpg"),
+  codestockFeedback: require("../assets/codestock-feedback-qr-code.png")
 });
 
 const data = {
@@ -163,6 +165,14 @@ export default class Presentation extends React.Component {
               </Text>
             </Fill>
           </Layout>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="tertiary" bgImage={images.codestock}>
+        </Slide>
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
+            Session Feedback
+          </Heading>
+          <Image src={images.codestockFeedback} margin="40px auto 0px" height="650px" />
         </Slide>
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
@@ -981,6 +991,7 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} margin="0px auto 40px" textColor="secondary">
             https://github.com/jwcarroll/not-your-fathers-js
           </Heading>
+          <Image src={images.codestockFeedback} margin="20px auto 20px" height="300px" />
           <Layout>
             <Fill>
               <Text margin="40px 0 0" textColor="tertiary" size={1} bold>
