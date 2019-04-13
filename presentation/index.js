@@ -1,6 +1,7 @@
 // Import React
 import React from "react";
 import Color from "color";
+import styled, { css } from "react-emotion";
 
 // Import Spectacle Core tags
 import {
@@ -57,7 +58,10 @@ const images = fixImagePaths({
   mindBlown: require("file-loader!../assets/mind-blown.mp4"),
   abeLincoln: require("../assets/abraham_lincoln_marquee.jpg"),
   selfie: require("../assets/professor-with-stars.jpg"),
-  selfieTweet: require("../assets/selfie-tweet.png")
+  selfieTweet: require("../assets/selfie-tweet.png"),
+  titanic: require("../assets/titanic.jpg"),
+  hindenburg: require("../assets/hindenburg.jpg"),
+  threeMileIsland: require("../assets/Three-Mile-Island.jpg")
 });
 
 const data = {
@@ -129,8 +133,166 @@ export default class Presentation extends React.Component {
             </Fill>
           </Layout>
         </Slide>
+        <Slide transition={["slide"]} bgColor="tertiary">
+          <Heading size={1} fit caps lineHeight={1} textColor="primary">
+            A Brief History of JavaScript
+          </Heading>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            JavaScript was created in 1995
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              By <Keyword>Brendan Eich</Keyword>
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              In Just <Keyword>10 days</Keyword>
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            1995 Was A Rough Year
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>OJ Simpson</Keyword> acquitted
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Jerry Garcia</Keyword> died
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Kendall Jenner</Keyword> born
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Windows 95</Keyword> released
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            <Keyword>10 Days?</Keyword> Really?
+          </Heading>          
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            Titanic => <Keyword>790 Days</Keyword>
+          </Heading>
+          <Image src={images.titanic} margin="40px auto 0px" height="650px" />          
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+          Hindenburg => <Keyword>1825 Days</Keyword>
+          </Heading>
+          <Image src={images.hindenburg} margin="40px auto 0px" height="650px" />          
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+          Three Mile Island => <Keyword>3650 Days</Keyword>
+          </Heading>
+          <Image src={images.threeMileIsland} margin="40px auto 0px" height="650px" />          
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            <Keyword>1996</Keyword> JavaScript => ECMA Script
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>1998</Keyword> ECMA Script 2
+            </Text>
+          </Appear>
+          <Appear>
+          <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>1999</Keyword> ECMA Script 3
+            </Text>
+          </Appear>
+          <Appear>
+          <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>😞😞</Keyword> ECMA Script 4
+            </Text>
+          </Appear>
+          <Appear>
+          <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>2009</Keyword> ECMA Script 5
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            <Keyword>2009</Keyword> Harmony Agenda
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>2015</Keyword> ECMA Script 6
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            ECMA Has new <Keyword>process</Keyword>
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Stage 0</Keyword> Strawman
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Stage 1</Keyword> Proposal
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Stage 2</Keyword> Draft
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Stage 3</Keyword> Candidate
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Stage 4</Keyword> Finished
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
+            New Release <Keyword>Every Year</Keyword>
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>2016</Keyword> ECMA Script 7
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>2017</Keyword> ECMA Script 8
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>2018</Keyword> ECMA Script 9
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+            <Keyword>2019-???</Keyword> ES.Next
+            </Text>
+          </Appear>
+        </Slide>
         <Slide transition={["slide"]}>
-          <Heading size={1} fit textColor="tertiary">ESNext Goodies</Heading>
+          <Heading size={1} fit textColor="tertiary">ES.Next Goodies</Heading>
           <Layout style={{ justifyContent: "space-around" }}>
             <List>
               <ListItem>Template Strings</ListItem>
@@ -846,3 +1008,9 @@ function fixImagePaths(images){
 
   return newPaths;
 }
+
+const Keyword = styled("span")`
+  text-shadow: 1px 1px 1px #000;
+  color: #f5b700;
+  text-transform: uppercase;
+`;
