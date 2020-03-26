@@ -10,11 +10,11 @@ System.register(["console"], function (exports_1, context_1) {
         return nums.reduce(function (tot, cur) { return tot + cur; }, 0);
     }
     function nameSum(name) {
+        var _a;
         var nums = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             nums[_i - 1] = arguments[_i];
         }
-        var _a;
         var tot = nums.reduce(function (tot, cur) { return tot + cur; }, 0);
         return _a = {}, _a[name] = tot, _a;
     }

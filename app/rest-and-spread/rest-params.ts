@@ -2,7 +2,7 @@ import { console } from "console";
 
 var total = sum(5, 10, 20);
 
-function sum(...nums: number[]) {
+function sum(...nums) {
   return nums.reduce(
     (tot, cur) => tot + cur
     , 0
@@ -11,7 +11,7 @@ function sum(...nums: number[]) {
 
 console.log(total);
 
-function nameSum(name: string, ...nums: number[]) {
+function nameSum(name, ...nums) {
   const tot = nums.reduce(
     (tot, cur) => tot + cur
     , 0

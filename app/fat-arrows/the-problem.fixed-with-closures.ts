@@ -1,6 +1,6 @@
 import { console } from "console";
 
-function Person(name: string) {
+function Person(name) {
   this.name = name;
 }
 Person.prototype = {

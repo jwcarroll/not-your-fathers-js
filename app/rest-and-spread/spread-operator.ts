@@ -32,3 +32,11 @@ const newFirst = [...first, 100];
 console.stream('new-array')
   .log(`first:    ${first}`)
   .log(`newFirst: ${newFirst}`);
+
+const letters = [..."Spread is Awesome!!!"];
+
+console.stream("iterables")
+  .log(letters);
+
+
+

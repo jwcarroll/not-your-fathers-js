@@ -11,7 +11,27 @@ System.register(["console"], function (exports_1, context_1) {
         };
         return __assign.apply(this, arguments);
     };
-    var console_1, family, josh, name, age, jName, jAge, totalAges, whatAboutBob, defaults, slow, cloned;
+    var __read = (this && this.__read) || function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+    var __spread = (this && this.__spread) || function () {
+        for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+    var console_1, family, _a, josh, name, age, jName, jAge, totalAges, whatAboutBob, defaults, slow, cloned;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -23,12 +43,13 @@ System.register(["console"], function (exports_1, context_1) {
             exports_1("family", family = [
                 { name: 'Josh', age: 38 },
                 { name: 'Patty', age: 38 },
-                { name: 'Hadassah', age: 8 },
-                { name: 'Elijah', age: 6 },
-                { name: 'Caleb', age: 4 },
-                { name: 'Isaiah', age: 2 }
+                { name: 'Hadassah', age: 11 },
+                { name: 'Elijah', age: 9 },
+                { name: 'Caleb', age: 7 },
+                { name: 'Isaiah', age: 5 },
+                { name: 'Ruth', age: 3 }
             ]);
-            josh = family[0];
+            _a = __read(family, 1), josh = _a[0];
             name = josh.name, age = josh.age;
             console_1.console.log(name);
             console_1.console.log(age);
@@ -44,7 +65,7 @@ System.register(["console"], function (exports_1, context_1) {
             console_1.console.stream('total-ages')
                 .log(totalAges);
             totalAges = 0;
-            whatAboutBob = family.concat([
+            whatAboutBob = __spread(family, [
                 { name: 'Bob' }
             ]);
             whatAboutBob.forEach(function (_a) {
@@ -65,7 +86,7 @@ System.register(["console"], function (exports_1, context_1) {
                 duration: 500,
                 complete: function () { }
             };
-            slow = __assign({}, defaults, { duration: 10000 });
+            slow = __assign(__assign({}, defaults), { duration: 10000 });
             console_1.console.stream('defaults')
                 .log(slow.duration)
                 .log(slow.easing)

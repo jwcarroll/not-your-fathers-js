@@ -38,7 +38,7 @@ System.register(["console"], function (exports_1, context_1) {
                 }
                 Person = __decorate([
                     Mixin(greeter),
-                    __metadata("design:paramtypes", [String, Number])
+                    __metadata("design:paramtypes", [Object, Object])
                 ], Person);
                 return Person;
             }());

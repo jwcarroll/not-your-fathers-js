@@ -13,8 +13,8 @@ const greeter: Greeter = {
 @Mixin(greeter)
 class Person implements Greeter {
   constructor(
-    public name: string,
-    public age: number
+    public name,
+    public age
   ) { }
 
   greet: () => void;

@@ -1,14 +1,5 @@
-System.register(["console", "./fake-service.js"], function (exports_1, context_1) {
+System.register(["console"], function (exports_1, context_1) {
     "use strict";
-    var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-        return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-        });
-    };
     var __generator = (this && this.__generator) || function (thisArg, body) {
         var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
         return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -36,45 +27,58 @@ System.register(["console", "./fake-service.js"], function (exports_1, context_1
             if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
         }
     };
-    var console_1, fake_service_js_1, svc;
+    var __read = (this && this.__read) || function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+    var __spread = (this && this.__spread) || function () {
+        for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+    var console_1, nums;
     var __moduleName = context_1 && context_1.id;
-    function computeProductAsync() {
-        return __awaiter(this, void 0, void 0, function () {
-            var a, b, product;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, svc.getValue()];
-                    case 1:
-                        a = _a.sent();
-                        return [4 /*yield*/, svc.getValue()];
-                    case 2:
-                        b = _a.sent();
-                        return [4 /*yield*/, svc.multiply(a, b)];
-                    case 3:
-                        product = _a.sent();
-                        console_1.console.log(a + " * " + b + " = " + product);
-                        return [2 /*return*/];
-                }
-            });
+    function range(start, end) {
+        var i;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    i = start;
+                    _a.label = 1;
+                case 1:
+                    if (!(i <= end)) return [3 /*break*/, 4];
+                    return [4 /*yield*/, i];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
+                case 3:
+                    i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/];
+            }
         });
     }
     return {
         setters: [
             function (console_1_1) {
                 console_1 = console_1_1;
-            },
-            function (fake_service_js_1_1) {
-                fake_service_js_1 = fake_service_js_1_1;
             }
         ],
         execute: function () {
-            svc = new fake_service_js_1.FakeService();
-            console_1.console.log('Fetching values...');
-            computeProductAsync()
-                .then(function () {
-                console_1.console.log('[finished]');
-            });
+            nums = __spread(range(1, 10));
+            console_1.console.log(nums);
         }
     };
 });
-//# sourceMappingURL=async-await.js.map
+//# sourceMappingURL=combine-with-spread.js.map

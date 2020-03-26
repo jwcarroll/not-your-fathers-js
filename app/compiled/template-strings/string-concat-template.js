@@ -14,7 +14,7 @@ System.register(["console"], function (exports_1, context_1) {
                 age: 38
             };
             msg = person.name + " is " + person.age + " years old";
-            msg2 = "\nperson: " + person.name + "\nage: " + person.age + "\n";
+            msg2 = "\nperson: " + person.name + "\nage: " + person.age + "\nold?: " + (person.age > 35 ? "🤭" : "🥰") + "\n";
             console_1.console.log(msg);
             console_1.console.log(msg2);
         }

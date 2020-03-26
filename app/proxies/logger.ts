@@ -1,9 +1,10 @@
 import { console } from "console";
 
+
 const josh = {
   name: 'Josh',
   age: 38,
-  greet: function (greeting: string) {
+  greet: function (greeting) {
     console.log(`${this.name} says ${greeting}`);
   }
 };
@@ -12,7 +13,7 @@ logMethodCalls(josh);
 
 josh.greet("Hello");
 
-function logMethodCalls<T extends Object>(obj: T) {
+function logMethodCalls(obj) {
   for (let propName in obj) {
     if (!obj.hasOwnProperty(propName)) continue;
 
@@ -26,7 +27,7 @@ function logMethodCalls<T extends Object>(obj: T) {
   return obj;
 }
 
-function createLoggedMethod<T extends Function>(func: T) {
+function createLoggedMethod(func) {
   return new Proxy(func, {
     apply: function (target, thisArg, argumentList) {
       console.log(`[TRACE]: ${target.name}: ${argumentList}`);

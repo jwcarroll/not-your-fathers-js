@@ -4,8 +4,6 @@ const noParams = () => { };
 
 const single = msg => { };
 
-const singleTyped = (msg: string) => { };
-
 const multiple = (a, b) => { };
 
 const returnVal = () => 'hello';

@@ -13,7 +13,8 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noImplicitAny": false,
-        "strict": false
+        "strict": false,
+        "downlevelIteration": true
     },
     "compileOnSave": true
 }

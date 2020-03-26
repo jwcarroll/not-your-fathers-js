@@ -12,10 +12,11 @@ System.register(["console"], function (exports_1, context_1) {
             exports_1("family", family = [
                 { name: 'Josh', age: 38 },
                 { name: 'Patty', age: 38 },
-                { name: 'Hadassah', age: 8 },
-                { name: 'Elijah', age: 6 },
-                { name: 'Caleb', age: 4 },
-                { name: 'Isaiah', age: 2 }
+                { name: 'Hadassah', age: 11 },
+                { name: 'Elijah', age: 9 },
+                { name: 'Caleb', age: 7 },
+                { name: 'Isaiah', age: 5 },
+                { name: 'Ruth', age: 3 }
             ]);
             husband = family[0];
             wife = family[1];

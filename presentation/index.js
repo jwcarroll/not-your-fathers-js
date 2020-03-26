@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable func-style */
 // Import React
 import React from "react";
 import Color from "color";
@@ -15,47 +17,38 @@ import {
   Text,
   Layout,
   Fill,
-  Fit,
   Image,
   Appear,
-  Link,
-  CodePane,
-  Table,
-  TableHeader,
-  TableHeaderItem,
-  TableItem,
-  TableRow,
-  TableBody,
-  S
+  CodePane
 } from "spectacle";
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
-import mapValues from "lodash/mapValues";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
 
-import CodeSlide from 'spectacle-code-slide';
-import CodeRunner from '../assets/components/code-runner';
-import RawHtml from '../assets/components/raw-html';
+import CodeSlide from "spectacle-code-slide";
+import CodeRunner from "../assets/components/code-runner";
+import RawHtml from "../assets/components/raw-html";
+import { fixImagePaths } from "./fix-image-paths";
+import { importTs } from "./import-ts";
+import { snippet } from "./snippet";
 
 //Custom components
-function Keyword(props){
+function Keyword(props) {
   const styles = {
-    textShadow: '1px 1px 1px #000',
-    color: '#f5b700',
-    textTransform: 'uppercase'
+    textShadow: "1px 1px 1px #000",
+    color: "#f5b700",
+    textTransform: "uppercase"
   };
-  
-  return (
-    <span style={styles} {...props}/>
-  );
+
+  return <span style={styles} {...props} />;
 }
 
 function NoteImage(props) {
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: "center" }}>
       <img {...props} />
     </div>
   );
@@ -65,9 +58,9 @@ function NoteVideo(props) {
   const { height, ...rest } = props;
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: "center" }}>
       <video height={height} autoPlay loop>
-        <source {...rest}></source>
+        <source {...rest} />
       </video>
     </div>
   );
@@ -86,18 +79,16 @@ const images = fixImagePaths({
   actuallyMan: require("../assets/actually-man.png"),
   typescriptLogo: require("../assets/typescript-logo.svg"),
   fatherJavaScript: require("../assets/js-not-your-dads-js.jpg"),
+  fatherJavaScriptApocalypse: require("../assets/js-not-your-dads-js-apocalypse.png"),
   mindBlown: require("file-loader!../assets/mind-blown.mp4"),
   abeLincoln: require("../assets/abraham_lincoln_marquee.jpg"),
   selfie: require("../assets/professor-with-stars.jpg"),
   selfieTweet: require("../assets/selfie-tweet.png"),
   titanic: require("../assets/titanic.jpg"),
   hindenburg: require("../assets/hindenburg.jpg"),
-  threeMileIsland: require("../assets/Three-Mile-Island.jpg")
+  threeMileIsland: require("../assets/Three-Mile-Island.jpg"),
+  thisIsFine: require("../assets/this-is-fine-background.jpg")
 });
-
-const data = {
-  users: require("../assets/snippets/sample-data.json")
-};
 
 preloader(images);
 
@@ -108,35 +99,39 @@ const colors = {
   quartenary: "#CECECE",
   codebg: "#2d2d2d",
   red: "#CC0D0A",
-  yellow: '#F5B700'
+  yellow: "#F5B700"
 };
 
 const darkenBy = 0.5;
 
+// eslint-disable-next-line new-cap
 colors.primaryDark = Color(colors.primary).darken(darkenBy);
+// eslint-disable-next-line new-cap
 colors.secondaryDark = Color(colors.secondary).darken(darkenBy);
+// eslint-disable-next-line new-cap
 colors.tertiaryDark = Color(colors.tertiary).darken(darkenBy);
+// eslint-disable-next-line new-cap
 colors.quartenaryDark = Color(colors.quartenary).darken(darkenBy);
 
 const styles = {
-  strikethrough: { textDecoration: 'line-through', opacity: '0.5' },
+  strikethrough: { textDecoration: "line-through", opacity: "0.5" },
   keyword: {
-    textShadow: '1px 1px 1px #000',
+    textShadow: "1px 1px 1px #000",
     color: colors.yellow,
-    textTransform: 'uppercase'
+    textTransform: "uppercase"
   },
   code: {
-    textAlign: 'left',
-    fontSize: '2rem'
+    textAlign: "left",
+    fontSize: "2rem"
   },
   codeSm: {
-    textAlign: 'left',
-    fontSize: '1.75rem',
-    marginLeft: '10px',
-    marginRight: '10px'
+    textAlign: "left",
+    fontSize: "1.75rem",
+    marginLeft: "10px",
+    marginRight: "10px"
   },
   shadow: {
-    textShadow: '#03A9FC 0px 0px 1px'
+    textShadow: "#03A9FC 0px 0px 1px"
   }
 };
 
@@ -150,7 +145,11 @@ export default class Presentation extends React.Component {
     return (
       <Deck theme={theme}>
         <Slide transition={["zoom"]} bgColor="primary">
-          <Image src={images.fatherJavaScript} margin="0px auto 40px" height="450px" />
+          <Image
+            src={images.fatherJavaScript}
+            margin="0px auto 40px"
+            height="450px"
+          />
           <Layout>
             <Fill>
               <Text margin="40px 0 0" textColor="tertiary" size={1} bold>
@@ -160,6 +159,34 @@ export default class Presentation extends React.Component {
             <Fill>
               <Text margin="40px 0 0" textColor="tertiary" size={1} bold>
                 @jwcarroll
+              </Text>
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide transition={["zoom"]} bgImage={images.thisIsFine} bgDarken={0.8}>
+          <Image
+            src={images.fatherJavaScriptApocalypse}
+            margin="0px auto 40px"
+            height="450px"
+          />
+          <Layout>
+            <Fill>
+              <Text margin="40px 0 0" textColor="primary" size={2} bold>
+                Apocalypse Edition
+              </Text>
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Image
+            src={images.fatherJavaScript}
+            margin="0px auto 40px"
+            height="450px"
+          />
+          <Layout>
+            <Fill>
+              <Text margin="40px 0 0" textColor="tertiary" size={1} bold>
+                Stay Safe. Take Care of Each Other.
               </Text>
             </Fill>
           </Layout>
@@ -212,25 +239,33 @@ export default class Presentation extends React.Component {
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
             <Keyword>10 Days?</Keyword> Really?
-          </Heading>          
+          </Heading>
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
             Titanic => <Keyword>790 Days</Keyword>
           </Heading>
-          <Image src={images.titanic} margin="40px auto 0px" height="650px" />          
+          <Image src={images.titanic} margin="40px auto 0px" height="650px" />
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-          Hindenburg => <Keyword>1825 Days</Keyword>
+            Hindenburg => <Keyword>1825 Days</Keyword>
           </Heading>
-          <Image src={images.hindenburg} margin="40px auto 0px" height="650px" />          
+          <Image
+            src={images.hindenburg}
+            margin="40px auto 0px"
+            height="650px"
+          />
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-          Three Mile Island => <Keyword>3650 Days</Keyword>
+            Three Mile Island => <Keyword>3650 Days</Keyword>
           </Heading>
-          <Image src={images.threeMileIsland} margin="40px auto 0px" height="650px" />          
+          <Image
+            src={images.threeMileIsland}
+            margin="40px auto 0px"
+            height="650px"
+          />
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
@@ -242,17 +277,17 @@ export default class Presentation extends React.Component {
             </Text>
           </Appear>
           <Appear>
-          <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
               <Keyword>1999</Keyword> ECMA Script 3
             </Text>
           </Appear>
           <Appear>
-          <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
               <Keyword>😞😞</Keyword> ECMA Script 4
             </Text>
           </Appear>
           <Appear>
-          <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
               <Keyword>2009</Keyword> ECMA Script 5
             </Text>
           </Appear>
@@ -318,12 +353,14 @@ export default class Presentation extends React.Component {
           </Appear>
           <Appear>
             <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
-            <Keyword>2019-???</Keyword> ES.Next
+              <Keyword>2019-???</Keyword> ES.Next
             </Text>
           </Appear>
         </Slide>
         <Slide transition={["slide"]}>
-          <Heading size={1} fit textColor="tertiary">ES.Next Goodies</Heading>
+          <Heading size={1} fit textColor="tertiary">
+            ES.Next Goodies
+          </Heading>
           <Layout style={{ justifyContent: "space-around" }}>
             <List>
               <ListItem>Template Strings</ListItem>
@@ -355,9 +392,18 @@ export default class Presentation extends React.Component {
             { loc: [2, 7], title: "Simple Person Object" },
             { loc: [7, 8], note: "No School Like The Old School!" },
             { loc: [7, 11] },
-            { loc: [7, 11], note: <CodeRunner systemImport={importTs("template-strings/string-concat-old-school.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [7, 11],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "template-strings/string-concat-old-school.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -366,9 +412,18 @@ export default class Presentation extends React.Component {
             { loc: [0, 0], title: "Hipster String Concatenation" },
             { loc: [7, 14], note: "Way Cooler Than Using '+'" },
             { loc: [7, 16] },
-            { loc: [7, 16], note: <CodeRunner systemImport={importTs("template-strings/string-concat-hipster.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [7, 16],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "template-strings/string-concat-hipster.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -378,10 +433,70 @@ export default class Presentation extends React.Component {
             { loc: [7, 8], note: "Look Mom! No '+'" },
             { loc: [9, 13], note: "Also Preserves Whitespace" },
             { loc: [7, 17] },
-            { loc: [7, 17], note: <CodeRunner systemImport={importTs("template-strings/string-concat-template.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
-        <Slide transition={["slide"]} bgColor="tertiary" bgImage={images.abeLincoln} bgDarken={0.6}>
+            {
+              loc: [7, 17],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "template-strings/string-concat-template.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
+        <CodeSlide
+          transition={[]}
+          lang="typescript"
+          code={snippet("template-strings/tagged-templates.ts")}
+          ranges={[
+            { loc: [0, 0], title: "Tagged Templates" },
+            { loc: [7, 10], note: "Intercept Strings and Args" },
+            { loc: [11, 14] },
+            {
+              loc: [11, 14],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs(
+                    "template-strings/tagged-templates.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [15, 18] },
+            {
+              loc: [15, 18],
+              note: (
+                <CodeRunner
+                  filter="params"
+                  systemImport={importTs(
+                    "template-strings/tagged-templates.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [19, 26] },
+            {
+              loc: [19, 26],
+              note: (
+                <CodeRunner
+                  filter="distance"
+                  systemImport={importTs(
+                    "template-strings/tagged-templates.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [19, 26], note: "🧙 WIZARDRY!!!" }
+          ]}
+        />
+        <Slide
+          transition={["slide"]}
+          bgColor="tertiary"
+          bgImage={images.abeLincoln}
+          bgDarken={0.6}
+        >
           <BlockQuote>
             <Quote>Template string are pretty dope!</Quote>
             <Cite>Abraham Lincoln</Cite>
@@ -393,18 +508,34 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide transition={["slide"]} bgColor="codebg">
-          <Heading size={1} margin="0px auto 40px" textColor="primary">Simple Class</Heading>
-          <Layout style={{ alignItems: "flex-start", justifyContent: "center" }}>
+          <Heading size={1} margin="0px auto 40px" textColor="primary">
+            Simple Class
+          </Heading>
+          <Layout
+            style={{ alignItems: "flex-start", justifyContent: "center" }}
+          >
             <Fill>
-              <CodePane textSize="28px" lang="typescript" source={snippet("classes/simple-class.sample")}></CodePane>
+              <CodePane
+                textSize="28px"
+                lang="typescript"
+                source={snippet("classes/simple-class.sample")}
+              />
             </Fill>
           </Layout>
         </Slide>
         <Slide transition={["slide"]} bgColor="codebg">
-          <Heading size={1} margin="0px auto 40px" textColor="primary">Simple Class</Heading>
-          <Layout style={{ alignItems: "flex-start", justifyContent: "center" }}>
+          <Heading size={1} margin="0px auto 40px" textColor="primary">
+            Simple Class
+          </Heading>
+          <Layout
+            style={{ alignItems: "flex-start", justifyContent: "center" }}
+          >
             <Fill>
-              <CodePane textSize="28px" lang="typescript" source={snippet("classes/simple-class.compiled.sample")}></CodePane>
+              <CodePane
+                textSize="28px"
+                lang="typescript"
+                source={snippet("classes/simple-class.compiled.sample")}
+              />
             </Fill>
           </Layout>
         </Slide>
@@ -421,26 +552,41 @@ export default class Presentation extends React.Component {
             { loc: [0, 8], title: "The Problem" },
             { loc: [2, 3], title: "var misbehaves!" },
             { loc: [3, 6], note: "Seems legit." },
-            { loc: [3, 6], note: <CodeRunner systemImport={importTs("let/the-problem.ts")}></CodeRunner> },
+            {
+              loc: [3, 6],
+              note: <CodeRunner systemImport={importTs("let/the-problem.ts")} />
+            },
             { loc: [2, 7], note: "Function scoped, rather than block scoped." }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={1} margin="0px auto 20px" textColor="tertiary" fit>Function Scope and Hoisting</Heading>
+          <Heading size={1} margin="0px auto 20px" textColor="tertiary" fit>
+            Function Scope and Hoisting
+          </Heading>
           <Layout style={{ alignItems: "center" }}>
             <Fill>
               <Appear>
-                <CodePane textSize="24px" lang="typescript" source={snippet("let/the-problem.ts")}></CodePane>
+                <CodePane
+                  textSize="24px"
+                  lang="typescript"
+                  source={snippet("let/the-problem.ts")}
+                />
               </Appear>
             </Fill>
             <Fill>
               <Appear>
-                <Heading size={3} textColor="tertiary">=></Heading>
+                <Heading size={3} textColor="tertiary">
+                  =>
+                </Heading>
               </Appear>
             </Fill>
             <Fill>
               <Appear>
-                <CodePane textSize="24px" lang="typescript" source={snippet("let/the-problem.hoisted.ts")}></CodePane>
+                <CodePane
+                  textSize="24px"
+                  lang="typescript"
+                  source={snippet("let/the-problem.hoisted.ts")}
+                />
               </Appear>
             </Fill>
           </Layout>
@@ -452,22 +598,48 @@ export default class Presentation extends React.Component {
           ranges={[
             { loc: [0, 0], title: "Fixing With Closures" },
             { loc: [3, 8], note: "Create new scope for each call" },
-            { loc: [3, 8], note: <CodeRunner systemImport={importTs("let/the-problem.fixed-with-closures.ts")}></CodeRunner> },
+            {
+              loc: [3, 8],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "let/the-problem.fixed-with-closures.ts"
+                  )}
+                />
+              )
+            },
             { loc: [3, 8], title: "Ugly!" }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
           code={snippet("let/using-let.ts")}
           ranges={[
-            { loc: [2, 7], title: <span><code>let</code> To The Rescue!</span> },
+            {
+              loc: [2, 7],
+              title: (
+                <span>
+                  <code>let</code> To The Rescue!
+                </span>
+              )
+            },
             { loc: [2, 3], note: "Replace var with let" },
-            { loc: [2, 7], note: <span><code>let</code> is block scoped</span> },
-            { loc: [2, 7], note: <CodeRunner systemImport={importTs("let/using-let.ts")}></CodeRunner> },
+            {
+              loc: [2, 7],
+              note: (
+                <span>
+                  <code>let</code> is block scoped
+                </span>
+              )
+            },
+            {
+              loc: [2, 7],
+              note: <CodeRunner systemImport={importTs("let/using-let.ts")} />
+            },
             { loc: [2, 7], title: "No More Uglies!" }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -477,18 +649,27 @@ export default class Presentation extends React.Component {
             { loc: [2, 3], note: "Create an object" },
             { loc: [6, 7], note: "Do some stuff" },
             { loc: [4, 9] },
-            { loc: [4, 9], note: <CodeRunner systemImport={importTs("const/the-problem.ts")}></CodeRunner> },
+            {
+              loc: [4, 9],
+              note: (
+                <CodeRunner systemImport={importTs("const/the-problem.ts")} />
+              )
+            },
             { loc: [6, 7], title: "WTF?!? doStuff()" },
             { loc: [22, 27], note: "Let's see what's going on..." },
             { loc: [42, 52] },
             { loc: [42, 52], title: "FML!" }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="codebg">
-          <Heading size={1} margin="0px auto 40px" textColor="primary">Using Const</Heading>
+          <Heading size={1} margin="0px auto 40px" textColor="primary">
+            Using Const
+          </Heading>
           <Layout style={{ justifyContent: "center" }}>
             <div style={styles.code}>
-              <RawHtml html={require("raw-loader!../app/const/using-const.html")}></RawHtml>
+              <RawHtml
+                html={require("raw-loader!../app/const/using-const.html")}
+              />
             </div>
           </Layout>
         </Slide>
@@ -501,56 +682,120 @@ export default class Presentation extends React.Component {
             { loc: [2, 3] },
             { loc: [6, 7], note: "Object is still mutable" },
             { loc: [4, 9] },
-            { loc: [4, 9], note: <CodeRunner systemImport={importTs("const/not-immutable.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
-        <Slide transition={["slide"]} bgColor="tertiary" bgImage={images.fatArrowMan} bgDarken={0.6}>
-          <Heading size={1} fit caps lineHeight={1} textColor="primary" style={styles.shadow}>
+            {
+              loc: [4, 9],
+              note: (
+                <CodeRunner systemImport={importTs("const/not-immutable.ts")} />
+              )
+            }
+          ]}
+        />
+        <Slide
+          transition={["slide"]}
+          bgColor="tertiary"
+          bgImage={images.fatArrowMan}
+          bgDarken={0.6}
+        >
+          <Heading
+            size={1}
+            fit
+            caps
+            lineHeight={1}
+            textColor="primary"
+            style={styles.shadow}
+          >
             Fat Arrows
           </Heading>
         </Slide>
         <Slide transition={["slide"]} bgColor="tertiary">
-          <Heading size={1} margin="0px 0 40px" fit caps lineHeight={1} textColor="primary">
+          <Heading
+            size={1}
+            margin="0px 0 40px"
+            fit
+            caps
+            lineHeight={1}
+            textColor="primary"
+          >
             What are arrow functions?
           </Heading>
           <Appear>
-            <Text size={1} margin="20px 0px" fit bold>Arrow functions are <span style={styles.keyword}>function expressions</span></Text>
+            <Text size={1} margin="20px 0px" fit bold>
+              Arrow functions are{" "}
+              <span style={styles.keyword}>function expressions</span>
+            </Text>
           </Appear>
           <Appear>
-            <Text size={1} margin="20px 0px" fit bold>With a <span style={styles.keyword}>shorter syntax</span></Text>
+            <Text size={1} margin="20px 0px" fit bold>
+              With a <span style={styles.keyword}>shorter syntax</span>
+            </Text>
           </Appear>
           <Appear>
-            <Text size={1} margin="20px 0px" fit bold>and a<span style={styles.keyword}>lexically bound</span> 'this' keyword</Text>
+            <Text size={1} margin="20px 0px" fit bold>
+              and a<span style={styles.keyword}>lexically bound</span> 'this'
+              keyword
+            </Text>
           </Appear>
         </Slide>
         <Slide transition={["slide"]} bgColor="codebg">
-          <Heading size={1} margin="0px auto 40px" fit textColor="primary">What Are Fat Arrows?</Heading>
-          <Layout style={{ alignItems: "flex-start", justifyContent: "center" }}>
+          <Heading size={1} margin="0px auto 40px" fit textColor="primary">
+            What Are Fat Arrows?
+          </Heading>
+          <Layout
+            style={{ alignItems: "flex-start", justifyContent: "center" }}
+          >
             <Fill>
               <Appear>
-                <CodePane textSize="28px" lang="typescript" source={snippet("fat-arrows/standard-functions.ts")}></CodePane>
+                <CodePane
+                  textSize="28px"
+                  lang="typescript"
+                  source={snippet("fat-arrows/standard-functions.ts")}
+                />
               </Appear>
             </Fill>
             <Fill>
               <Appear>
-                <CodePane textSize="28px" lang="typescript" source={snippet("fat-arrows/standard-functions-as-fat-arrows.ts")}></CodePane>
+                <CodePane
+                  textSize="28px"
+                  lang="typescript"
+                  source={snippet(
+                    "fat-arrows/standard-functions-as-fat-arrows.ts"
+                  )}
+                />
               </Appear>
             </Fill>
           </Layout>
         </Slide>
         <Slide transition={["slide"]} bgColor="codebg">
-          <Heading size={1} margin="0px auto 40px" fit textColor="primary">What Are Fat Arrows? (cont.)</Heading>
-          <Layout style={{ alignItems: "flex-start", justifyContent: "center" }}>
+          <Heading size={1} margin="0px auto 40px" fit textColor="primary">
+            What Are Fat Arrows? (cont.)
+          </Heading>
+          <Layout
+            style={{ alignItems: "flex-start", justifyContent: "center" }}
+          >
             <Fill>
-                <CodePane textSize="28px" lang="typescript" source={snippet("fat-arrows/standard-functions.promises.ts")}></CodePane>
+              <CodePane
+                textSize="28px"
+                lang="typescript"
+                source={snippet("fat-arrows/standard-functions.promises.ts")}
+              />
             </Fill>
           </Layout>
         </Slide>
         <Slide transition={["slide"]} bgColor="codebg">
-          <Heading size={1} margin="0px auto 40px" fit textColor="primary">What Are Fat Arrows? (cont.)</Heading>
-          <Layout style={{ alignItems: "flex-start", justifyContent: "center" }}>
+          <Heading size={1} margin="0px auto 40px" fit textColor="primary">
+            What Are Fat Arrows? (cont.)
+          </Heading>
+          <Layout
+            style={{ alignItems: "flex-start", justifyContent: "center" }}
+          >
             <Fill>
-                <CodePane textSize="28px" lang="typescript" source={snippet("fat-arrows/standard-functions-as-fat-arrows.promises.ts")}></CodePane>
+              <CodePane
+                textSize="28px"
+                lang="typescript"
+                source={snippet(
+                  "fat-arrows/standard-functions-as-fat-arrows.promises.ts"
+                )}
+              />
             </Fill>
           </Layout>
         </Slide>
@@ -560,24 +805,41 @@ export default class Presentation extends React.Component {
           code={snippet("fat-arrows/syntax.ts")}
           ranges={[
             { loc: [0, 0], title: "Syntax" },
-            { loc: [2, 9], note: "Single params can omit parens" },
-            { loc: [6, 7], note: "Unless you add type information" },
-            { loc: [10, 15], note: "Simple value implicit return" },
-            { loc: [16, 19], note: "Wrap new object in parens" }
-          ]}>
-        </CodeSlide>
+            { loc: [2, 7] },
+            { loc: [2, 3], note: "Parens required without parameters" },
+            { loc: [4, 5], note: "Single params can omit parens" },
+            { loc: [6, 7], note: "Parens required for multiple parameters" },
+            { loc: [8, 13], note: "Simple value implicit return" },
+            { loc: [14, 17], note: "Wrap new object in parens" }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
-          <Heading size={1} margin="0px 0 40px" fit caps lineHeight={1} textColor="primary">
+          <Heading
+            size={1}
+            margin="0px 0 40px"
+            fit
+            caps
+            lineHeight={1}
+            textColor="primary"
+          >
             Lexical 'this' keyword
           </Heading>
           <Appear>
-            <Text size={1} margin="20px 0px" fit bold>With normal functions the <span style={styles.keyword}>this</span> keyword</Text>
+            <Text size={1} margin="20px 0px" fit bold>
+              With normal functions the <span style={styles.keyword}>this</span>{" "}
+              keyword
+            </Text>
           </Appear>
           <Appear>
-            <Text size={1} margin="20px 0px" fit bold>Is <span style={styles.keyword}>not</span> bound based on <span style={styles.keyword}>where</span> it is</Text>
+            <Text size={1} margin="20px 0px" fit bold>
+              Is <span style={styles.keyword}>not</span> bound based on{" "}
+              <span style={styles.keyword}>where</span> it is
+            </Text>
           </Appear>
           <Appear>
-            <Text size={1} margin="20px 0px" fit bold>But rather, how it is <span style={styles.keyword}>called</span></Text>
+            <Text size={1} margin="20px 0px" fit bold>
+              But rather, how it is <span style={styles.keyword}>called</span>
+            </Text>
           </Appear>
         </Slide>
         <CodeSlide
@@ -591,11 +853,18 @@ export default class Presentation extends React.Component {
             { loc: [6, 9], note: "Access to member variables" },
             { loc: [9, 14], note: "Asynchronously call same function" },
             { loc: [16, 21] },
-            { loc: [16, 21], note: <CodeRunner systemImport={importTs("fat-arrows/the-problem.ts")}></CodeRunner> },
+            {
+              loc: [16, 21],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("fat-arrows/the-problem.ts")}
+                />
+              )
+            },
             { loc: [10, 13], title: "'this' Isn't What You Think" },
             { loc: [11, 12], note: "'this' is bound based on how it is called" }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -605,10 +874,19 @@ export default class Presentation extends React.Component {
             { loc: [9, 14] },
             { loc: [12, 13], note: "Bind 'this' keyword" },
             { loc: [16, 21] },
-            { loc: [16, 21], note: <CodeRunner systemImport={importTs("fat-arrows/the-problem.fixed-with-bind.ts")}></CodeRunner> },
+            {
+              loc: [16, 21],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "fat-arrows/the-problem.fixed-with-bind.ts"
+                  )}
+                />
+              )
+            },
             { loc: [9, 14], title: "Ugly!" }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -619,10 +897,19 @@ export default class Presentation extends React.Component {
             { loc: [10, 11], note: "Capture 'this' using a closure" },
             { loc: [13, 14] },
             { loc: [18, 23] },
-            { loc: [18, 23], note: <CodeRunner systemImport={importTs("fat-arrows/the-problem.fixed-with-closures.ts")}></CodeRunner> },
+            {
+              loc: [18, 23],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "fat-arrows/the-problem.fixed-with-closures.ts"
+                  )}
+                />
+              )
+            },
             { loc: [9, 16], title: "Less Ugly..." }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -632,12 +919,21 @@ export default class Presentation extends React.Component {
             { loc: [5, 15] },
             { loc: [9, 14], note: "Replaced with an arrow function" },
             { loc: [16, 21] },
-            { loc: [16, 21], note: <CodeRunner systemImport={importTs("fat-arrows/the-problem.fixed-with-arrow-functions.ts")}></CodeRunner> },
+            {
+              loc: [16, 21],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "fat-arrows/the-problem.fixed-with-arrow-functions.ts"
+                  )}
+                />
+              )
+            },
             { loc: [11, 12], note: "'this' is lexically bound" },
             { loc: [11, 12], note: <NoteImage src={images.actuallyMan} /> },
             { loc: [11, 12], note: "Arrow functions don't bind 'this'. Ever." }
-          ]}>
-        </CodeSlide>
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Rest and Spread Operators
@@ -650,51 +946,143 @@ export default class Presentation extends React.Component {
           ranges={[
             { loc: [0, 0], title: "Variable Number of Arguments" },
             { loc: [2, 5] },
-            { loc: [2, 5], note: <CodeRunner filter="default" code={snippet("rest-and-spread/the-problem.es6")}></CodeRunner> },
+            {
+              loc: [2, 5],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  code={snippet("rest-and-spread/the-problem.es6")}
+                />
+              )
+            },
             { loc: [6, 14] },
             { loc: [7, 9], note: "Convert 'arguments' to a real array" },
             { loc: [10, 13], note: "Manipulate the array normally" },
             { loc: [6, 14], note: "Makes a lot of assumptions" },
             { loc: [15, 19], note: "...which is a problem" },
-            { loc: [15, 19], note: <CodeRunner filter="mixed" code={snippet("rest-and-spread/the-problem.es6")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [15, 19],
+              note: (
+                <CodeRunner
+                  filter="mixed"
+                  code={snippet("rest-and-spread/the-problem.es6")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
           code={snippet("rest-and-spread/rest-params.ts")}
           ranges={[
-            { loc: [0, 0], title: <span><code>...rest</code> FTW!</span> },
+            {
+              loc: [0, 0],
+              title: (
+                <span>
+                  <code>...rest</code> FTW!
+                </span>
+              )
+            },
             { loc: [2, 10] },
             { loc: [4, 5], note: "Capture the rest of the arguments" },
             { loc: [5, 9], note: "'nums' is a normal array" },
-            { loc: [11, 12], note: <CodeRunner filter="default" systemImport={importTs("rest-and-spread/rest-params.ts")}></CodeRunner> },
+            {
+              loc: [11, 12],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs("rest-and-spread/rest-params.ts")}
+                />
+              )
+            },
             { loc: [13, 21], note: "Any number of initial params" },
             { loc: [14, 18] },
             { loc: [22, 27] },
-            { loc: [22, 27], note: <CodeRunner filter="nameSum" systemImport={importTs("rest-and-spread/rest-params.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [22, 27],
+              note: (
+                <CodeRunner
+                  filter="nameSum"
+                  systemImport={importTs("rest-and-spread/rest-params.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
           code={snippet("rest-and-spread/spread-operator.ts")}
           ranges={[
-            { loc: [0, 0], title: <span><code>...spread</code> is Awesome!</span>, note: "Tasty like jam!" },
+            {
+              loc: [0, 0],
+              title: (
+                <span>
+                  <code>...spread</code> is Awesome!
+                </span>
+              ),
+              note: "🍇 Tasty like jam!"
+            },
             { loc: [3, 6], note: "Apply entire array to arguments" },
             { loc: [3, 8] },
-            { loc: [3, 8], note: <CodeRunner filter="default" systemImport={importTs("rest-and-spread/spread-operator.ts")}></CodeRunner> },
+            {
+              loc: [3, 8],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs("rest-and-spread/spread-operator.ts")}
+                />
+              )
+            },
             { loc: [10, 12], note: "Spread out array to arguments" },
             { loc: [10, 16] },
-            { loc: [10, 16], note: <CodeRunner filter="spread" systemImport={importTs("rest-and-spread/spread-operator.ts")}></CodeRunner> },
+            {
+              loc: [10, 16],
+              note: (
+                <CodeRunner
+                  filter="spread"
+                  systemImport={importTs("rest-and-spread/spread-operator.ts")}
+                />
+              )
+            },
             { loc: [18, 23], note: "Spread across elements of array" },
             { loc: [18, 27] },
-            { loc: [18, 27], note: <CodeRunner filter="concat" systemImport={importTs("rest-and-spread/spread-operator.ts")}></CodeRunner> },
-            { loc: [29, 30], note: "Add new element without mutating original" },
+            {
+              loc: [18, 27],
+              note: (
+                <CodeRunner
+                  filter="concat"
+                  systemImport={importTs("rest-and-spread/spread-operator.ts")}
+                />
+              )
+            },
+            {
+              loc: [29, 30],
+              note: "Add new element without mutating original"
+            },
             { loc: [29, 34] },
-            { loc: [29, 34], note: <CodeRunner filter="new-array" systemImport={importTs("rest-and-spread/spread-operator.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [29, 34],
+              note: (
+                <CodeRunner
+                  filter="new-array"
+                  systemImport={importTs("rest-and-spread/spread-operator.ts")}
+                />
+              )
+            },
+            { loc: [35, 39], note: "Works on Iterables too!" },
+            {
+              loc: [35, 39],
+              note: (
+                <CodeRunner
+                  filter="iterables"
+                  systemImport={importTs("rest-and-spread/spread-operator.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Destructuring Assignment
@@ -706,73 +1094,209 @@ export default class Presentation extends React.Component {
           code={snippet("destructuring/the-problem.array-destructuring.ts")}
           ranges={[
             { loc: [0, 0], title: "Getting Values From Arrays Sucks" },
-            { loc: [3, 11], note: "Simple array of 'Person' objects" },
-            { loc: [12, 14], note: "Pulling values out by index" },
-            { loc: [14, 19], note: "Looping to build up collection" },
-            { loc: [12, 23] },
-            { loc: [12, 23], note: <CodeRunner filter="default" systemImport={importTs("destructuring/the-problem.array-destructuring.ts")}></CodeRunner> },
-            { loc: [12, 23], title: "Yuck!" }
-          ]}>
-        </CodeSlide>
+            { loc: [3, 12], note: "Simple array of 'Person' objects" },
+            { loc: [13, 15], note: "Pulling values out by index" },
+            { loc: [15, 20], note: "Looping to build up collection" },
+            { loc: [13, 24] },
+            {
+              loc: [13, 24],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs(
+                    "destructuring/the-problem.array-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [13, 24], title: "Yuck!" }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
           code={snippet("destructuring/array-destructuring.ts")}
           ranges={[
             { loc: [0, 0], title: "Array Destructuring Assignment" },
-            { loc: [3, 11], note: "Simple array of 'Person' objects" },
-            { loc: [13, 14], note: "Pull out items, and assign them to variables" },
-            { loc: [13, 18] },
-            { loc: [13, 28], note: <CodeRunner filter="default" systemImport={importTs("destructuring/array-destructuring.ts")}></CodeRunner> },
-            { loc: [21, 25] },
-            { loc: [21, 22], note: "Can be used with function parameters" },
-            { loc: [21, 27] },
-            { loc: [21, 27], note: <CodeRunner filter="printFirst" systemImport={importTs("destructuring/array-destructuring.ts")}></CodeRunner> },
-            { loc: [30, 34] },
-            { loc: [30, 31], note: "Combined with rest operator" },
-            { loc: [30, 36] },
-            { loc: [34, 36], note: <CodeRunner filter="printRest" systemImport={importTs("destructuring/array-destructuring.ts")}></CodeRunner> },
-            { loc: [39, 42], note: "Pull values from array return value" },
-            { loc: [39, 45] },
-            { loc: [39, 45], note: <CodeRunner filter="minMax" systemImport={importTs("destructuring/array-destructuring.ts")}></CodeRunner> },
-            { loc: [48, 49], note: "Assign default values" },
-            { loc: [48, 54] },
-            { loc: [48, 54], note: <CodeRunner filter="default-vals" systemImport={importTs("destructuring/array-destructuring.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            { loc: [3, 12], note: "Simple array of 'Person' objects" },
+            {
+              loc: [14, 15],
+              note: "Pull out items, and assign them to variables"
+            },
+            { loc: [14, 19] },
+            {
+              loc: [14, 29],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs(
+                    "destructuring/array-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [22, 26] },
+            { loc: [22, 23], note: "Can be used with function parameters" },
+            { loc: [22, 28] },
+            {
+              loc: [22, 28],
+              note: (
+                <CodeRunner
+                  filter="printFirst"
+                  systemImport={importTs(
+                    "destructuring/array-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [31, 35] },
+            { loc: [31, 32], note: "Combined with rest operator" },
+            { loc: [31, 37] },
+            {
+              loc: [35, 37],
+              note: (
+                <CodeRunner
+                  filter="printRest"
+                  systemImport={importTs(
+                    "destructuring/array-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [40, 43], note: "Pull values from array return value" },
+            { loc: [40, 46] },
+            {
+              loc: [40, 46],
+              note: (
+                <CodeRunner
+                  filter="minMax"
+                  systemImport={importTs(
+                    "destructuring/array-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [49, 50], note: "Assign default values" },
+            { loc: [49, 50] },
+            {
+              loc: [49, 55],
+              note: (
+                <CodeRunner
+                  filter="default-vals"
+                  systemImport={importTs(
+                    "destructuring/array-destructuring.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
           code={snippet("destructuring/object-destructuring.ts")}
           ranges={[
             { loc: [0, 0], title: "Object Destructuring Assignment" },
-            { loc: [3, 11], note: "Simple array of 'Person' objects" },
-            { loc: [12, 13], note: "Grab first item in array" },
-            { loc: [14, 15], note: "Pull out properties and assign to variables" },
-            { loc: [12, 18] },
-            { loc: [12, 18], note: <CodeRunner filter="default" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> },
-            { loc: [21, 22], note: "Rename variables" },
-            { loc: [21, 26] },
-            { loc: [21, 26], note: <CodeRunner filter="new-property-names" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> },
-            { loc: [29, 32] },
-            { loc: [31, 32], note: "Pull properties from function params" },
-            { loc: [29, 35] },
-            { loc: [29, 35], note: <CodeRunner filter="total-ages" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> },
-            { loc: [40, 44], note: "What about missing properties?" },
-            { loc: [46, 52] },
-            { loc: [46, 52], note: <CodeRunner filter="total-ages-unsafe" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> },
-            { loc: [58, 61] },
-            { loc: [59, 60], note: "Assign default values" },
-            { loc: [58, 65] },
-            { loc: [58, 65], note: <CodeRunner filter="total-ages-safe" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> },
-            { loc: [66, 71] },
-            { loc: [72, 76], note: "Copy unassigned properties" },
-            { loc: [72, 81], note: <CodeRunner filter="defaults" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> },
-            { loc: [84, 87], note: "Simple shallow clone" },
-            { loc: [84, 92] },
-            { loc: [84, 92], note: <CodeRunner filter="cloned" systemImport={importTs("destructuring/object-destructuring.ts")}></CodeRunner> }
-          ]}>
-        </CodeSlide>
+            { loc: [3, 12], note: "Simple array of 'Person' objects" },
+            { loc: [13, 14], note: "Grab first item in array" },
+            {
+              loc: [15, 16],
+              note: "Pull out properties and assign to variables"
+            },
+            { loc: [13, 19] },
+            {
+              loc: [13, 19],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [22, 23], note: "Rename variables" },
+            { loc: [22, 27] },
+            {
+              loc: [22, 27],
+              note: (
+                <CodeRunner
+                  filter="new-property-names"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [30, 33] },
+            { loc: [32, 33], note: "Pull properties from function params" },
+            { loc: [30, 36] },
+            {
+              loc: [30, 36],
+              note: (
+                <CodeRunner
+                  filter="total-ages"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [41, 45], note: "What about missing properties?" },
+            { loc: [47, 53] },
+            {
+              loc: [47, 53],
+              note: (
+                <CodeRunner
+                  filter="total-ages-unsafe"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [59, 62] },
+            { loc: [60, 61], note: "Assign default values" },
+            { loc: [59, 66] },
+            {
+              loc: [59, 66],
+              note: (
+                <CodeRunner
+                  filter="total-ages-safe"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [67, 72] },
+            { loc: [73, 77], note: "Copy unassigned properties" },
+            {
+              loc: [73, 82],
+              note: (
+                <CodeRunner
+                  filter="defaults"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [85, 86], note: "Simple shallow clone" },
+            { loc: [85, 93] },
+            {
+              loc: [85, 93],
+              note: (
+                <CodeRunner
+                  filter="cloned"
+                  systemImport={importTs(
+                    "destructuring/object-destructuring.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Async and Await
@@ -791,9 +1315,17 @@ export default class Presentation extends React.Component {
             { loc: [13, 14], note: "Pass values to another async call" },
             { loc: [15, 18], note: "Final result" },
             { loc: [20, 27], note: "Execute and log when finished" },
-            { loc: [20, 27], note: <CodeRunner filter="default" systemImport={importTs("async-await/async-with-promises.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [20, 27],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs("async-await/async-with-promises.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -805,15 +1337,31 @@ export default class Presentation extends React.Component {
             { loc: [0, 0], note: "*giddy with excitement*" },
             { loc: [0, 0], title: "Wait for it..." },
             { loc: [5, 12] },
-            { loc: [5, 12], note: <NoteVideo height="500px" src={images.mindBlown.replace("/", "")} /> },
+            {
+              loc: [5, 12],
+              note: (
+                <NoteVideo
+                  height="500px"
+                  src={images.mindBlown.replace("/", "")}
+                />
+              )
+            },
             { loc: [5, 12] },
             { loc: [5, 6], note: "async keyword before functions" },
             { loc: [6, 9], note: "await keyword to resolve Promises" },
             { loc: [10, 11], note: "Use values normally" },
             { loc: [15, 19], note: "Function is still asynchronous" },
-            { loc: [15, 19], note: <CodeRunner filter="default" systemImport={importTs("async-await/async-await.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [15, 19],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs("async-await/async-await.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Generators
@@ -830,9 +1378,17 @@ export default class Presentation extends React.Component {
             { loc: [7, 8], note: "Iterable return value" },
             { loc: [9, 12], note: "Advance execution with each .next() call" },
             { loc: [9, 16] },
-            { loc: [9, 16], note: <CodeRunner filter="default" systemImport={importTs("generators/simple-generator.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [9, 16],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs("generators/simple-generator.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -844,9 +1400,17 @@ export default class Presentation extends React.Component {
             { loc: [12, 16], note: "Grab a couple of values" },
             { loc: [17, 18], note: "Do other work" },
             { loc: [19, 25], note: "Finish exhasting generator" },
-            { loc: [19, 25], note: <CodeRunner filter="default" systemImport={importTs("generators/yielding-execution.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [19, 25],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs("generators/yielding-execution.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -856,9 +1420,35 @@ export default class Presentation extends React.Component {
             { loc: [2, 14] },
             { loc: [6, 13], note: "Generate never finishes" },
             { loc: [15, 20], note: "Keep pulling values forever" },
-            { loc: [15, 20], note: <CodeRunner systemImport={importTs("generators/fibonacci.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [15, 20],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("generators/fibonacci.ts")}
+                />
+              )
+            }
+          ]}
+        />
+        <CodeSlide
+          transition={[]}
+          lang="typescript"
+          code={snippet("generators/combine-with-spread.ts")}
+          ranges={[
+            { loc: [0, 0], title: "Combining With ...spread" },
+            { loc: [2, 11] },
+            { loc: [2, 7], note: "Yield simple range of values" },
+            { loc: [8, 9], note: "Generator returns Iterable" },
+            {
+              loc: [8, 11],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("generators/combine-with-spread.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Proxies
@@ -874,9 +1464,16 @@ export default class Presentation extends React.Component {
             { loc: [8, 13], note: "Wrap object in proxy; Pass in handler" },
             { loc: [9, 12], note: "Intercept property access" },
             { loc: [14, 20] },
-            { loc: [14, 20], note: <CodeRunner systemImport={importTs("proxies/simple-get-handler.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [14, 20],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("proxies/simple-get-handler.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -889,9 +1486,16 @@ export default class Presentation extends React.Component {
             { loc: [9, 16], note: "Detect if property changes" },
             { loc: [15, 16], note: "Return 'true' for success" },
             { loc: [19, 21] },
-            { loc: [19, 21], note: <CodeRunner systemImport={importTs("proxies/change-detection.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [19, 21],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("proxies/change-detection.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -911,9 +1515,12 @@ export default class Presentation extends React.Component {
             { loc: [32, 33], note: "Log method name and arguments" },
             { loc: [34, 35], note: "Call method normally" },
             { loc: [11, 14] },
-            { loc: [11, 14], note: <CodeRunner systemImport={importTs("proxies/logger.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [11, 14],
+              note: <CodeRunner systemImport={importTs("proxies/logger.ts")} />
+            }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Decorators
@@ -930,9 +1537,18 @@ export default class Presentation extends React.Component {
             { loc: [6, 13], note: "Applies to a target" },
             { loc: [2, 5], note: "Passed to decorator at runtime" },
             { loc: [14, 18], note: "Object now has new behavior" },
-            { loc: [14, 18], note: <CodeRunner systemImport={importTs("decorators/simple-class-decorator.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [14, 18],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "decorators/simple-class-decorator.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
@@ -948,21 +1564,35 @@ export default class Presentation extends React.Component {
             { loc: [28, 36], note: "Factory function" },
             { loc: [30, 34], note: "Copy properties to prototype" },
             { loc: [22, 25] },
-            { loc: [22, 25], note: <CodeRunner systemImport={importTs("decorators/mixin-decorator.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [22, 25],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("decorators/mixin-decorator.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <CodeSlide
           transition={[]}
           lang="typescript"
           code={snippet("decorators/method-decorator.ts")}
           ranges={[
             { loc: [0, 0], title: "Method Decorator" },
-            { loc: [31, 34], title: "Scary!", note: "Maybe we should confirm this first?" },
+            {
+              loc: [31, 34],
+              title: "Scary!",
+              note: "Maybe we should confirm this first?"
+            },
             { loc: [3, 13], note: "Use decorator to add confirmation step" },
             { loc: [5, 6] },
             { loc: [38, 47] },
             { loc: [38, 39], note: "Capture provided message" },
-            { loc: [39, 43], note: "Target. Property Name. Property Descriptor." },
+            {
+              loc: [39, 43],
+              note: "Target. Property Name. Property Descriptor."
+            },
             { loc: [44, 45], note: "Capture original method" },
             { loc: [46, 56], note: "Replace with new one" },
             { loc: [48, 49], note: "Show confirmation" },
@@ -971,14 +1601,35 @@ export default class Presentation extends React.Component {
             { loc: [46, 56] },
             { loc: [5, 13] },
             { loc: [31, 34], note: "Normal method call" },
-            { loc: [31, 34], note: <CodeRunner systemImport={importTs("decorators/method-decorator.ts")} /> }
-          ]}>
-        </CodeSlide>
+            {
+              loc: [31, 34],
+              note: (
+                <CodeRunner
+                  systemImport={importTs("decorators/method-decorator.ts")}
+                />
+              )
+            }
+          ]}
+        />
         <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} margin="0px auto 40px" textColor="secondary">
+          <Heading
+            size={1}
+            fit
+            caps
+            lineHeight={1}
+            margin="0px auto 40px"
+            textColor="secondary"
+          >
             Thank You!
           </Heading>
-          <Heading size={1} fit caps lineHeight={1} margin="0px auto 40px" textColor="secondary">
+          <Heading
+            size={1}
+            fit
+            caps
+            lineHeight={1}
+            margin="0px auto 40px"
+            textColor="secondary"
+          >
             https://github.com/jwcarroll/not-your-fathers-js
           </Heading>
           <Layout>
@@ -997,25 +1648,4 @@ export default class Presentation extends React.Component {
       </Deck>
     );
   }
-}
-
-function snippet(fileName) {
-  return require(`raw-loader!../app${addForwardSlash(fileName)}`);
-}
-
-function importTs(fileName) {
-  return `/app/compiled${addForwardSlash(fileName).replace(".ts", ".js")}`;
-}
-
-function addForwardSlash(str) {
-  return /^\//g.test(str) ? str : `/${str}`;
-}
-
-function fixImagePaths(images){
-  const oldPaths = images;
-  const newPaths = mapValues(images, (v) => v.replace(/^\/dist/, '/dist/'));
-
-  console.log(oldPaths, newPaths);
-
-  return newPaths;
 }

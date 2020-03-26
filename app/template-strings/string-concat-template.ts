@@ -10,6 +10,7 @@ const msg = `${person.name} is ${person.age} years old`;
 const msg2 = `
 person: ${person.name}
 age: ${person.age}
+old?: ${person.age > 35 ? "🤭" : "🥰"}
 `;
 
 console.log(msg);
