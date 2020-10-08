@@ -66,6 +66,18 @@ function NoteVideo(props) {
   );
 }
 
+function Arrow(props) {
+  const { variant = "right" } = props;
+
+  switch (variant) {
+    case "left":
+      return "<=";
+    case "right":
+    default:
+      return "=>";
+  }
+}
+
 // Require CSS
 require("normalize.css");
 require("../assets/styles/nice-scrollbar.css");
@@ -198,6 +210,36 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
+            1995 Was A Better Time
+          </Heading>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Gangsta's Paradise</Keyword> top 10 songs
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Toy Story</Keyword> top 10 movies
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Seinfeld & Friends</Keyword> top 10 shows
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Missy Franklin</Keyword> former olympian born
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
+              <Keyword>Windows 95</Keyword> released
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={1} fit caps>
             JavaScript was created in 1995
           </Heading>
           <Appear>
@@ -213,43 +255,18 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-            1995 Was A Rough Year
-          </Heading>
-          <Appear>
-            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
-              <Keyword>OJ Simpson</Keyword> acquitted
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
-              <Keyword>Jerry Garcia</Keyword> died
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
-              <Keyword>Kendall Jenner</Keyword> born
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
-              <Keyword>Windows 95</Keyword> released
-            </Text>
-          </Appear>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-          <Heading size={1} fit caps>
             <Keyword>10 Days?</Keyword> Really?
           </Heading>
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-            Titanic => <Keyword>790 Days</Keyword>
+            Titanic <Arrow variant="right" /> <Keyword>790 Days</Keyword>
           </Heading>
           <Image src={images.titanic} margin="40px auto 0px" height="650px" />
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-            Hindenburg => <Keyword>1825 Days</Keyword>
+            Hindenburg <Arrow variant="right" /> <Keyword>1825 Days</Keyword>
           </Heading>
           <Image
             src={images.hindenburg}
@@ -259,7 +276,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-            Three Mile Island => <Keyword>3650 Days</Keyword>
+            Three Mile Island <Arrow variant="right" /> <Keyword>3650 Days</Keyword>
           </Heading>
           <Image
             src={images.threeMileIsland}
@@ -269,7 +286,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={1} fit caps>
-            <Keyword>1996</Keyword> JavaScript => ECMA Script
+            <Keyword>1996</Keyword> JavaScript <Arrow variant="right" /> ECMA Script
           </Heading>
           <Appear>
             <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
@@ -364,16 +381,17 @@ export default class Presentation extends React.Component {
           <Layout style={{ justifyContent: "space-around" }}>
             <List>
               <ListItem>Template Strings</ListItem>
-              <ListItem>class Keyword</ListItem>
+              <ListItem style={styles.strikethrough}>class Keyword</ListItem>
               <ListItem>Arrow Functions</ListItem>
               <ListItem>const / let</ListItem>
               <ListItem>Rest / Spread</ListItem>
             </List>
             <List>
               <ListItem>Destructuring</ListItem>
+              <ListItem>Optional Chaining / Nullish Coalescing</ListItem>
               <ListItem>async / await</ListItem>
               <ListItem>Generators</ListItem>
-              <ListItem>Proxies</ListItem>
+              <ListItem style={styles.strikethrough}>Proxies</ListItem>
               <ListItem>Decorators</ListItem>
             </List>
           </Layout>
@@ -502,7 +520,7 @@ export default class Presentation extends React.Component {
             <Cite>Abraham Lincoln</Cite>
           </BlockQuote>
         </Slide>
-        <Slide transition={["slide"]} bgColor="tertiary">
+        {/* <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Classes
           </Heading>
@@ -538,7 +556,7 @@ export default class Presentation extends React.Component {
               />
             </Fill>
           </Layout>
-        </Slide>
+        </Slide> */}
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Const and Let
@@ -576,7 +594,7 @@ export default class Presentation extends React.Component {
             <Fill>
               <Appear>
                 <Heading size={3} textColor="tertiary">
-                  =>
+                  <Arrow variant="right" />
                 </Heading>
               </Appear>
             </Fill>
@@ -1297,6 +1315,122 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
+        {/* BEGIN: Optional Chaning */}
+        <Slide transition={["slide"]} bgColor="tertiary">
+          <Heading size={1} fit caps lineHeight={1} textColor="primary">
+            Optional Chaining ?.
+          </Heading>
+        </Slide>
+        <CodeSlide
+          transition={[]}
+          lang="typescript"
+          code={snippet("optional-chaining/the-problem.ts")}
+          ranges={[
+            { loc: [2, 6], title: "No checks on null / undefined" },
+            { loc: [6, 11] },
+            {
+              loc: [6, 11],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "optional-chaining/the-problem.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
+        <CodeSlide
+          transition={[]}
+          lang="typescript"
+          code={snippet("optional-chaining/the-solution.ts")}
+          ranges={[
+            { loc: [2, 6], title: "Optional Chaining Syntax" },
+            { loc: [6, 11] },
+            {
+              loc: [6, 11],
+              note: (
+                <CodeRunner
+                  systemImport={importTs(
+                    "optional-chaining/the-solution.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
+        {/* END: Optional Chaning */}
+        <Slide transition={["slide"]} bgColor="tertiary">
+          <Heading size={1} fit caps lineHeight={1} textColor="primary">
+            Nullish Coalesing ??
+          </Heading>
+        </Slide>
+        <CodeSlide
+          transition={[]}
+          lang="typescript"
+          code={snippet("nullish-coalescing/the-problem.ts")}
+          ranges={[
+            { loc: [2, 9], title: "The Problem" },
+            { loc: [3, 4], note: "Using || to handle null and undefined" },
+            { loc: [9, 12], note: "Works great for common case" },
+            {
+              loc: [9, 12],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs(
+                    "nullish-coalescing/the-problem.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [13, 17], note: "Not so great for falsy" },
+            {
+              loc: [13, 17],
+              note: (
+                <CodeRunner
+                  filter="falsy"
+                  systemImport={importTs(
+                    "nullish-coalescing/the-problem.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
+        <CodeSlide
+          transition={[]}
+          lang="typescript"
+          code={snippet("nullish-coalescing/the-solution.ts")}
+          ranges={[
+            { loc: [2, 9], title: "The Solution" },
+            { loc: [3, 4], note: "Using ?? to handle null and undefined" },
+            { loc: [9, 12], note: "Works great for common case" },
+            {
+              loc: [9, 12],
+              note: (
+                <CodeRunner
+                  filter="default"
+                  systemImport={importTs(
+                    "nullish-coalescing/the-solution.ts"
+                  )}
+                />
+              )
+            },
+            { loc: [13, 17], note: "Works as expected for falsy" },
+            {
+              loc: [13, 17],
+              note: (
+                <CodeRunner
+                  filter="falsy"
+                  systemImport={importTs(
+                    "nullish-coalescing/the-solution.ts"
+                  )}
+                />
+              )
+            }
+          ]}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Async and Await
@@ -1449,7 +1583,7 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
-        <Slide transition={["slide"]} bgColor="tertiary">
+        {/* <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Proxies
           </Heading>
@@ -1520,7 +1654,7 @@ export default class Presentation extends React.Component {
               note: <CodeRunner systemImport={importTs("proxies/logger.ts")} />
             }
           ]}
-        />
+        /> */}
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Decorators

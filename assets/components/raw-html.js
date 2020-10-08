@@ -1,7 +1,7 @@
-const React = require('react');
+/* eslint-disable react/prop-types */
+const React = require("react");
 
 export default class RawHtml extends React.Component {
-
   constructor() {
     super();
   }
@@ -10,8 +10,8 @@ export default class RawHtml extends React.Component {
     const { html, customStyle, style, ...rest } = this.props;
 
     return (
-      <div style={{...customStyle, ...style}} {...rest}>
-        <div dangerouslySetInnerHTML={{__html: html}}></div>
+      <div style={{ ...customStyle, ...style }} {...rest}>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     );
   }
