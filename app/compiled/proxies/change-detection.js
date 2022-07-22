@@ -11,12 +11,12 @@ System.register(["console"], function (exports_1, context_1) {
         execute: function () {
             josh = {
                 name: 'Josh',
-                age: 38
+                age: 41
             };
             joshProxy = new Proxy(josh, {
                 set: function (target, property, value, receiver) {
                     if (target[property] !== value) {
-                        console_1.console.log("[" + String(property) + "]: " + target[property] + " => " + value);
+                        console_1.console.log("[".concat(String(property), "]: ").concat(target[property], " => ").concat(value));
                     }
                     target[property] = value;
                     return true;

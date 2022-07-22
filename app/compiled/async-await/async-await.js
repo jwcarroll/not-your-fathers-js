@@ -52,7 +52,7 @@ System.register(["console", "./fake-service.js"], function (exports_1, context_1
                         return [4 /*yield*/, svc.multiply(a, b)];
                     case 3:
                         product = _a.sent();
-                        console_1.console.log(a + " * " + b + " = " + product);
+                        console_1.console.log("".concat(a, " * ").concat(b, " = ").concat(product));
                         return [2 /*return*/];
                 }
             });

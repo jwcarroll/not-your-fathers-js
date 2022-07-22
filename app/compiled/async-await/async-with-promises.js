@@ -24,7 +24,7 @@ System.register(["console", "./fake-service.js"], function (exports_1, context_1
         return Promise.all([p1, p2])
             .then(function (_a) {
             var _b = __read(_a, 2), a = _b[0], b = _b[1];
-            console_1.console.log(a + " * " + b + " = [calculating...]");
+            console_1.console.log("".concat(a, " * ").concat(b, " = [calculating...]"));
             return svc.multiply(a, b);
         })
             .then(function (product) {

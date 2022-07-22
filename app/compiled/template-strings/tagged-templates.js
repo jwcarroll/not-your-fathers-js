@@ -29,7 +29,7 @@ System.register(["console"], function (exports_1, context_1) {
         execute: function () {
             person = {
                 name: "Josh",
-                age: 38
+                age: 41
             };
             console_1.console.log(myTag(templateObject_1 || (templateObject_1 = __makeTemplateObject(["Hello World"], ["Hello World"]))));
             console_1.console.stream("params").log(myTag(templateObject_2 || (templateObject_2 = __makeTemplateObject(["Hi ", ""], ["Hi ", ""])), person.name));

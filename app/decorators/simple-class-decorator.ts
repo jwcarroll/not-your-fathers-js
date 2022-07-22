@@ -12,7 +12,7 @@ class Person {
   ){}
 }
 
-const josh = new Person("Josh", 38);
+const josh = new Person("Josh", 41);
 
 console.log(josh);
 console.log(`josh[__decorated] = ${josh["__decorated"]}`);

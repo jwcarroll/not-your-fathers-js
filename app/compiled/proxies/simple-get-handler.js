@@ -20,11 +20,11 @@ System.register(["console"], function (exports_1, context_1) {
                 }
             });
             console_1.console.log('Does Josh Like:');
-            console_1.console.log("pickles: " + joshLikes.pickles);
-            console_1.console.log("cats: " + joshLikes.cats);
-            console_1.console.log("mustard: " + joshLikes.mustard);
-            console_1.console.log("kids: " + joshLikes.kids);
-            console_1.console.log("long walks on the beach: " + joshLikes.longWalksOnTheBeach);
+            console_1.console.log("pickles: ".concat(joshLikes.pickles));
+            console_1.console.log("cats: ".concat(joshLikes.cats));
+            console_1.console.log("mustard: ".concat(joshLikes.mustard));
+            console_1.console.log("kids: ".concat(joshLikes.kids));
+            console_1.console.log("long walks on the beach: ".concat(joshLikes.longWalksOnTheBeach));
         }
     };
 });

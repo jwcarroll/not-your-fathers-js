@@ -8,4 +8,4 @@ var Person = (function () {
     };
     return Person;
 }());
-var josh = new Person('Josh', 38);
+var josh = new Person('Josh', 41);

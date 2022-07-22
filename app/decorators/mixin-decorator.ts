@@ -20,7 +20,7 @@ class Person implements Greeter {
   greet: () => void;
 }
 
-const josh = new Person("Josh", 38);
+const josh = new Person("Josh", 41);
 
 josh.greet();
 

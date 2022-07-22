@@ -6,7 +6,7 @@ System.register(["console"], function (exports_1, context_1) {
         var _a;
         if (stream === void 0) { stream = "default"; }
         var name = ((_a = obj === null || obj === void 0 ? void 0 : obj.name) === null || _a === void 0 ? void 0 : _a.first) || "friend";
-        var msg = "Hello " + name;
+        var msg = "Hello ".concat(name);
         console_1.console.stream(stream)
             .log(msg);
     }

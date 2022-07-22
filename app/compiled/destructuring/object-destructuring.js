@@ -27,9 +27,14 @@ System.register(["console"], function (exports_1, context_1) {
         }
         return ar;
     };
-    var __spread = (this && this.__spread) || function () {
-        for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-        return ar;
+    var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     };
     var console_1, family, _a, josh, name, age, jName, jAge, totalAges, whatAboutBob, defaults, slow, cloned;
     var __moduleName = context_1 && context_1.id;
@@ -41,13 +46,13 @@ System.register(["console"], function (exports_1, context_1) {
         ],
         execute: function () {
             exports_1("family", family = [
-                { name: 'Josh', age: 38 },
-                { name: 'Patty', age: 38 },
-                { name: 'Hadassah', age: 11 },
-                { name: 'Elijah', age: 9 },
-                { name: 'Caleb', age: 7 },
-                { name: 'Isaiah', age: 5 },
-                { name: 'Ruth', age: 3 }
+                { name: 'Josh', age: 41 },
+                { name: 'Patty', age: 41 },
+                { name: 'Hadassah', age: 14 },
+                { name: 'Elijah', age: 12 },
+                { name: 'Caleb', age: 10 },
+                { name: 'Isaiah', age: 8 },
+                { name: 'Ruth', age: 6 }
             ]);
             _a = __read(family, 1), josh = _a[0];
             name = josh.name, age = josh.age;
@@ -65,9 +70,9 @@ System.register(["console"], function (exports_1, context_1) {
             console_1.console.stream('total-ages')
                 .log(totalAges);
             totalAges = 0;
-            whatAboutBob = __spread(family, [
+            whatAboutBob = __spreadArray(__spreadArray([], __read(family), false), [
                 { name: 'Bob' }
-            ]);
+            ], false);
             whatAboutBob.forEach(function (_a) {
                 var age = _a.age;
                 return totalAges += age;
@@ -94,8 +99,8 @@ System.register(["console"], function (exports_1, context_1) {
             cloned = __assign({}, josh);
             cloned.age = 25;
             console_1.console.stream('cloned')
-                .log("josh.age = " + josh.age)
-                .log("cloned.age = " + cloned.age);
+                .log("josh.age = ".concat(josh.age))
+                .log("cloned.age = ".concat(cloned.age));
         }
     };
 });

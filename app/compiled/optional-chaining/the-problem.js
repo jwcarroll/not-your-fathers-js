@@ -3,7 +3,7 @@ System.register(["console"], function (exports_1, context_1) {
     var console_1;
     var __moduleName = context_1 && context_1.id;
     function printName(obj) {
-        var msg = "Hello " + obj.name.first;
+        var msg = "Hello ".concat(obj.name.first);
         console_1.console.log(msg);
     }
     return {

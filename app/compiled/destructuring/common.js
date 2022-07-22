@@ -16,9 +16,14 @@ System.register([], function (exports_1, context_1) {
         }
         return ar;
     };
-    var __spread = (this && this.__spread) || function () {
-        for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-        return ar;
+    var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     };
     var __moduleName = context_1 && context_1.id;
     function getMinMax() {
@@ -26,8 +31,8 @@ System.register([], function (exports_1, context_1) {
         for (var _i = 0; _i < arguments.length; _i++) {
             nums[_i] = arguments[_i];
         }
-        var min = Math.min.apply(Math, __spread(nums));
-        var max = Math.max.apply(Math, __spread(nums));
+        var min = Math.min.apply(Math, __spreadArray([], __read(nums), false));
+        var max = Math.max.apply(Math, __spreadArray([], __read(nums), false));
         return [min, max];
     }
     exports_1("getMinMax", getMinMax);

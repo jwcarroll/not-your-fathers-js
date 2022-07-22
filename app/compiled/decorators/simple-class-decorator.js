@@ -32,9 +32,9 @@ System.register(["console"], function (exports_1, context_1) {
                 ], Person);
                 return Person;
             }());
-            josh = new Person("Josh", 38);
+            josh = new Person("Josh", 41);
             console_1.console.log(josh);
-            console_1.console.log("josh[__decorated] = " + josh["__decorated"]);
+            console_1.console.log("josh[__decorated] = ".concat(josh["__decorated"]));
         }
     };
 });

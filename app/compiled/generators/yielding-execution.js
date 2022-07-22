@@ -38,7 +38,7 @@ System.register(["console"], function (exports_1, context_1) {
                     _a.label = 1;
                 case 1:
                     if (!(i < n)) return [3 /*break*/, 4];
-                    console_1.console.log("yielding: " + i);
+                    console_1.console.log("yielding: ".concat(i));
                     return [4 /*yield*/, n];
                 case 2:
                     _a.sent();

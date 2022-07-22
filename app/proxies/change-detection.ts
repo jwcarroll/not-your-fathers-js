@@ -2,7 +2,7 @@ import { console } from "console";
 
 const josh = {
   name: 'Josh',
-  age: 38
+  age: 41
 };
 
 const joshProxy = new Proxy(josh, {

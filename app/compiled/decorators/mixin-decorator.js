@@ -28,7 +28,7 @@ System.register(["console"], function (exports_1, context_1) {
         execute: function () {
             greeter = {
                 greet: function () {
-                    console_1.console.log("Hello, my name is " + this.name);
+                    console_1.console.log("Hello, my name is ".concat(this.name));
                 }
             };
             Person = /** @class */ (function () {
@@ -42,7 +42,7 @@ System.register(["console"], function (exports_1, context_1) {
                 ], Person);
                 return Person;
             }());
-            josh = new Person("Josh", 38);
+            josh = new Person("Josh", 41);
             josh.greet();
         }
     };

@@ -16,7 +16,7 @@ System.register(["console"], function (exports_1, context_1) {
     function createLoggedMethod(func) {
         return new Proxy(func, {
             apply: function (target, thisArg, argumentList) {
-                console_1.console.log("[TRACE]: " + target.name + ": " + argumentList);
+                console_1.console.log("[TRACE]: ".concat(target.name, ": ").concat(argumentList));
                 return target.apply(thisArg, argumentList);
             }
         });
@@ -30,9 +30,9 @@ System.register(["console"], function (exports_1, context_1) {
         execute: function () {
             josh = {
                 name: 'Josh',
-                age: 38,
+                age: 41,
                 greet: function (greeting) {
-                    console_1.console.log(this.name + " says " + greeting);
+                    console_1.console.log("".concat(this.name, " says ").concat(greeting));
                 }
             };
             logMethodCalls(josh);

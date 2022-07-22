@@ -97,7 +97,7 @@ System.register(["console"], function (exports_1, context_1) {
                             n -= 1;
                             if (n <= 0) {
                                 clearInterval(id);
-                                res();
+                                res(undefined);
                             }
                         }, 500);
                     });

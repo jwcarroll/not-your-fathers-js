@@ -2,13 +2,13 @@ import { console } from "console";
 import { Person } from "./common.js";
 
 export const family: Person[] = [
-  { name: 'Josh', age: 38 },
-  { name: 'Patty', age: 38 },
-  { name: 'Hadassah', age: 11 },
-  { name: 'Elijah', age: 9 },
-  { name: 'Caleb', age: 7 },
-  { name: 'Isaiah', age: 5 },
-  { name: 'Ruth', age: 3 }
+  { name: 'Josh', age: 41 },
+  { name: 'Patty', age: 41 },
+  { name: 'Hadassah', age: 14 },
+  { name: 'Elijah', age: 12 },
+  { name: 'Caleb', age: 10 },
+  { name: 'Isaiah', age: 8 },
+  { name: 'Ruth', age: 6 }
 ];
 
 const [josh] = family;

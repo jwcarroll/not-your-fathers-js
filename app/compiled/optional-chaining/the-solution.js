@@ -4,7 +4,7 @@ System.register(["console"], function (exports_1, context_1) {
     var __moduleName = context_1 && context_1.id;
     function printName(obj) {
         var _a;
-        var msg = "Hello " + ((_a = obj === null || obj === void 0 ? void 0 : obj.name) === null || _a === void 0 ? void 0 : _a.first);
+        var msg = "Hello ".concat((_a = obj === null || obj === void 0 ? void 0 : obj.name) === null || _a === void 0 ? void 0 : _a.first);
         console_1.console.log(msg);
     }
     return {

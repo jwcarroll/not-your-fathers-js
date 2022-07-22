@@ -370,7 +370,7 @@ export default class Presentation extends React.Component {
           </Appear>
           <Appear>
             <Text size={1} margin="20px 0px" textColor="tertiary" fit bold>
-              <Keyword>2019-???</Keyword> ES.Next
+              <Keyword>2022</Keyword> ECMA Script 2022
             </Text>
           </Appear>
         </Slide>
@@ -1346,6 +1346,7 @@ export default class Presentation extends React.Component {
           code={snippet("optional-chaining/the-solution.ts")}
           ranges={[
             { loc: [2, 6], title: "Optional Chaining Syntax" },
+            { loc: [3, 4] },
             { loc: [6, 11] },
             {
               loc: [6, 11],

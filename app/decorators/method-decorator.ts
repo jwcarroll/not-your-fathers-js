@@ -22,7 +22,7 @@ class SelfDestructButton {
 
         if (n <= 0) {
           clearInterval(id);
-          res();
+          res(undefined);
         }
       }, 500);
     });

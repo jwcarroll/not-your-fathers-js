@@ -11,10 +11,10 @@ System.register(["console"], function (exports_1, context_1) {
         execute: function () {
             person = {
                 name: "Josh",
-                age: 38
+                age: 41
             };
-            msg = person.name + " is " + person.age + " years old";
-            msg2 = "\nperson: " + person.name + "\nage: " + person.age + "\nold?: " + (person.age > 35 ? "🤭" : "🥰") + "\n";
+            msg = "".concat(person.name, " is ").concat(person.age, " years old");
+            msg2 = "\nperson: ".concat(person.name, "\nage: ").concat(person.age, "\nold?: ").concat(person.age > 35 ? "🤭" : "🥰", "\n");
             console_1.console.log(msg);
             console_1.console.log(msg2);
         }

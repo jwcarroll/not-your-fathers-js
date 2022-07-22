@@ -14,7 +14,7 @@ System.register(["console"], function (exports_1, context_1) {
         execute: function () {
             Person.prototype = {
                 sayHello: function () {
-                    console_1.console.log("My name is " + this.name);
+                    console_1.console.log("My name is ".concat(this.name));
                 },
                 sayHelloLater: function () {
                     var _this = this;

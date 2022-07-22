@@ -2,7 +2,7 @@ import { console } from "console";
 
 const person = {
   name: "Josh",
-  age: 38
+  age: 41
 };
 
 const msg = person.name + " is " + person.age + "  years old";

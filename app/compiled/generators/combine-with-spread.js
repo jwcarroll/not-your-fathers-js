@@ -43,9 +43,14 @@ System.register(["console"], function (exports_1, context_1) {
         }
         return ar;
     };
-    var __spread = (this && this.__spread) || function () {
-        for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-        return ar;
+    var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     };
     var console_1, nums;
     var __moduleName = context_1 && context_1.id;
@@ -76,7 +81,7 @@ System.register(["console"], function (exports_1, context_1) {
             }
         ],
         execute: function () {
-            nums = __spread(range(1, 10));
+            nums = __spreadArray([], __read(range(1, 10)), false);
             console_1.console.log(nums);
         }
     };

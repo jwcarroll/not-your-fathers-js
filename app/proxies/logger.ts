@@ -3,7 +3,7 @@ import { console } from "console";
 
 const josh = {
   name: 'Josh',
-  age: 38,
+  age: 41,
   greet: function (greeting) {
     console.log(`${this.name} says ${greeting}`);
   }
