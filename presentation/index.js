@@ -381,7 +381,7 @@ export default class Presentation extends React.Component {
           <Layout style={{ justifyContent: "space-around" }}>
             <List>
               <ListItem>Template Strings</ListItem>
-              <ListItem style={styles.strikethrough}>class Keyword</ListItem>
+              <ListItem>class Keyword</ListItem>
               <ListItem>Arrow Functions</ListItem>
               <ListItem>const / let</ListItem>
               <ListItem>Rest / Spread</ListItem>
@@ -391,7 +391,7 @@ export default class Presentation extends React.Component {
               <ListItem>Optional Chaining / Nullish Coalescing</ListItem>
               <ListItem>async / await</ListItem>
               <ListItem>Generators</ListItem>
-              <ListItem style={styles.strikethrough}>Proxies</ListItem>
+              <ListItem>Proxies</ListItem>
               <ListItem>Decorators</ListItem>
             </List>
           </Layout>
@@ -520,7 +520,7 @@ export default class Presentation extends React.Component {
             <Cite>Abraham Lincoln</Cite>
           </BlockQuote>
         </Slide>
-        {/* <Slide transition={["slide"]} bgColor="tertiary">
+        <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Classes
           </Heading>
@@ -556,7 +556,7 @@ export default class Presentation extends React.Component {
               />
             </Fill>
           </Layout>
-        </Slide> */}
+        </Slide>
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Const and Let
@@ -1584,7 +1584,7 @@ export default class Presentation extends React.Component {
             }
           ]}
         />
-        {/* <Slide transition={["slide"]} bgColor="tertiary">
+        <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Proxies
           </Heading>
@@ -1655,7 +1655,7 @@ export default class Presentation extends React.Component {
               note: <CodeRunner systemImport={importTs("proxies/logger.ts")} />
             }
           ]}
-        /> */}
+        />
         <Slide transition={["slide"]} bgColor="tertiary">
           <Heading size={1} fit caps lineHeight={1} textColor="primary">
             Decorators
